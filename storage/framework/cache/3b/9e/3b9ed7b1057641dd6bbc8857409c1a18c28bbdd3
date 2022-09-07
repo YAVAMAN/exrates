@@ -1,0 +1,166 @@
+1662473231a:1:{s:11:"default.htm";a:6:{s:8:"fileName";s:11:"default.htm";s:7:"content";s:3347:"description = "Default layout"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>October CMS - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="OctoberCMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="OctoberCMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+        <link href="{{ 'assets/css/vendor.css'|theme }}" rel="stylesheet">
+        <link href="{{ 'assets/css/theme.css'|theme }}" rel="stylesheet">
+        {% styles %}
+    </head>
+    <body>
+        <div class="main">
+            <!-- Header -->
+            <header id="layout-header">
+                {% partial 'site/header' %}
+            </header>
+
+            <!-- Content -->
+            <section id="layout-content">
+                {% page %}
+            </section>
+
+            <!-- Footer -->
+            <footer id="layout-footer">
+                {% partial 'site/footer' %}
+            </footer>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            const request = new XMLHttpRequest();
+            const url = 'parse.php';
+            request.responseType =	"json";
+            request.open('POST', url);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.addEventListener("readystatechange", () => {
+                if (request.readyState === 4 && request.status === 200) {
+                    let obj = request.response.channel.item;
+
+                    for (let i = 0; i < obj.length; i++) {
+                        let tableRow = document.createElement('tr');
+                
+                        let title = document.createElement('td');
+                        title.className = 'title';
+                        title.innerHTML = obj[i].title + ' / KZT';
+                        tableRow.appendChild(title);
+                
+                        let value = document.createElement('td');
+                        value.className = 'value';
+                        value.innerHTML = obj[i].description;
+                        tableRow.appendChild(value);
+
+                        let change = document.createElement('td');
+                        change.className = 'value';
+                        if (obj[i].index == 'UP') {
+                            change.innerHTML = '1'
+                        } else {
+                            change.innerHTML = '2';
+                        }
+                        tableRow.appendChild(change);
+
+                        let table = document.getElementById('exchangeRates').querySelector('tbody');
+                        table.appendChild(tableRow);
+                    }
+                }
+            });
+            request.send();
+        </script>
+        <script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
+        <script src="{{ 'assets/vendor/bootstrap.js'|theme }}"></script>
+        <script src="{{ 'assets/javascript/app.js'|theme }}"></script>
+        <!-- <script src="{{ 'assets/javascript/main.js'|theme }}"></script> -->
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>
+";s:5:"mtime";i:1662472628;s:6:"markup";s:3312:"<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>October CMS - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="OctoberCMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="OctoberCMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+        <link href="{{ 'assets/css/vendor.css'|theme }}" rel="stylesheet">
+        <link href="{{ 'assets/css/theme.css'|theme }}" rel="stylesheet">
+        {% styles %}
+    </head>
+    <body>
+        <div class="main">
+            <!-- Header -->
+            <header id="layout-header">
+                {% partial 'site/header' %}
+            </header>
+
+            <!-- Content -->
+            <section id="layout-content">
+                {% page %}
+            </section>
+
+            <!-- Footer -->
+            <footer id="layout-footer">
+                {% partial 'site/footer' %}
+            </footer>
+        </div>
+
+        <!-- Scripts -->
+        <script>
+            const request = new XMLHttpRequest();
+            const url = 'parse.php';
+            request.responseType =	"json";
+            request.open('POST', url);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.addEventListener("readystatechange", () => {
+                if (request.readyState === 4 && request.status === 200) {
+                    let obj = request.response.channel.item;
+
+                    for (let i = 0; i < obj.length; i++) {
+                        let tableRow = document.createElement('tr');
+                
+                        let title = document.createElement('td');
+                        title.className = 'title';
+                        title.innerHTML = obj[i].title + ' / KZT';
+                        tableRow.appendChild(title);
+                
+                        let value = document.createElement('td');
+                        value.className = 'value';
+                        value.innerHTML = obj[i].description;
+                        tableRow.appendChild(value);
+
+                        let change = document.createElement('td');
+                        change.className = 'value';
+                        if (obj[i].index == 'UP') {
+                            change.innerHTML = '1'
+                        } else {
+                            change.innerHTML = '2';
+                        }
+                        tableRow.appendChild(change);
+
+                        let table = document.getElementById('exchangeRates').querySelector('tbody');
+                        table.appendChild(tableRow);
+                    }
+                }
+            });
+            request.send();
+        </script>
+        <script src="{{ 'assets/vendor/jquery.js'|theme }}"></script>
+        <script src="{{ 'assets/vendor/bootstrap.js'|theme }}"></script>
+        <script src="{{ 'assets/javascript/app.js'|theme }}"></script>
+        <!-- <script src="{{ 'assets/javascript/main.js'|theme }}"></script> -->
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>";s:4:"code";N;s:11:"description";s:14:"Default layout";}}
